@@ -13,6 +13,7 @@
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
+		<h2.version>1.4.196</h2.version>
    </properties>
   <dependencies>
     <dependency>
@@ -54,11 +55,22 @@
 		<artifactId>spring-security-web</artifactId>
 		<version>${spring.security.version}</version>
 	</dependency>
-
 	<dependency>
 		<groupId>org.springframework.security</groupId>
 		<artifactId>spring-security-config</artifactId>
 		<version>${spring.security.version}</version>
+	</dependency>
+	<!-- JDBC -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<!-- H2 database -->
+	<dependency>
+		<groupId>com.h2database</groupId>
+		<artifactId>h2</artifactId>
+		<version>${h2.version}</version>
 	</dependency>
 	<!-- jstl for jsp page -->
 	<dependency>
