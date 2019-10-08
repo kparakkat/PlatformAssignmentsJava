@@ -13,7 +13,7 @@
 						<form:label path="name">Name:</form:label>
 					</td>
 					<td>
-						<form:input path="name" name="name" id="name" />
+						<form:input path="name" name="name" id="name" value = "${user.name}" />
 					</td>
 				</tr>
 				<tr>
@@ -21,7 +21,7 @@
 						<form:label path="email">Email:</form:label>
 					</td>
 					<td>
-						<form:input path="email" name="email" id="email" />
+						<form:input path="email" name="email" id="email" value="${user.email}"  />
 					</td>
 				</tr>
 				<tr>
@@ -29,7 +29,7 @@
 						<form:label path="username">Username:</form:label>
 					</td>
 					<td>
-						<form:input path="username" name="username" id="username" />
+						<form:input path="username" name="username" id="username" value="${user.username}"/>
 					</td>
 				</tr>
 				<tr>
@@ -37,7 +37,7 @@
 						<form:label path="password">Password:</form:label>
 					</td>
 					<td>
-						<form:password path="password" name="password" id="password" />
+						<form:password path="password" name="password" id="password" value="${user.password}" />
 					</td>
 				</tr>
 				<tr>
@@ -51,7 +51,9 @@
 				
 				<tr></tr>
 				<tr>
-					<td></td>
+					<td><input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+					<form:input type="hidden" path="id" name="id" id="id"  value="${user.id}"  />
+					</td>
 					<td><a href="home">Home</a>
 					</td>
 				</tr>

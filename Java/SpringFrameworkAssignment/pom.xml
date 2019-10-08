@@ -13,7 +13,7 @@
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
-		<h2.version>1.4.196</h2.version>
+		<h2.version>1.4.199</h2.version>
    </properties>
   <dependencies>
     <dependency>

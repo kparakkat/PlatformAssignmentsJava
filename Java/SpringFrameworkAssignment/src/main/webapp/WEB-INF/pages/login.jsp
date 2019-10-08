@@ -7,7 +7,7 @@
 		<title>Login</title>
 	</head>
 	<body>
-		<form:form id="loginForm" modelAttribute="login" action="loginForm" method="post">
+		<form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
 			<table align="center">
 				<tr>
 					<td>
@@ -35,7 +35,8 @@
 				</tr>
 				<tr></tr>
 				<tr>
-					<td></td>
+					<td><input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+					</td>
 					<td><a href="home">Home</a>
 					</td>
 				</tr>

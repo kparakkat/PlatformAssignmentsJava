@@ -11,11 +11,12 @@
                 <td>Welcome to account details page</td>
             </tr>
             <tr>
+            	<td><a href="/SpringFrameworkAssignment/updateaccount/${userid}">Update Account</a></td>
             </tr>
             <tr>
             </tr>
             <tr>
-                <td><a href="home.jsp">Home</a>
+                <td><a href="home">Home</a>
                 </td>
             </tr>
         </table>

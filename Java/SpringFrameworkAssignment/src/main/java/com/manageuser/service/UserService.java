@@ -10,6 +10,7 @@ public class UserService implements IUserService {
 	
 	@Autowired
 	private IUserDao userDao;
+	
 	@Override
 	public User getUser(int id) {
 		return userDao.getUser(id);
@@ -18,6 +19,11 @@ public class UserService implements IUserService {
 	@Override
 	public int addUser(User user) {
 		return userDao.addUser(user);
+	}
+	
+	@Override
+	public int updateUser(User user) {
+		return userDao.updateUser(user);
 	}
 	
 	@Override

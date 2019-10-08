@@ -36,6 +36,14 @@ public class UserDao implements IUserDao{
 	}
 	
 	@Transactional
+	public int updateUser(User user) {
+		String sql = "update user set name = ?, email = ?, username = ?, password = ? where id = ?";
+		int resp = jdbcTemplate.update(sql, new Object[] { user.getName(), user.getEmail(),
+				user.getUsername(), user.getPassword(), user.getId() });
+		return resp;
+	}
+	
+	@Transactional
 	public User validateUser(Login login) {
 		User user = (User) jdbcTemplate.queryForObject("select * from user where username = ? and password = ?", new Object[] { login.getUsername(), login.getPassword() }, new UserRowMapper());
 		return user;
