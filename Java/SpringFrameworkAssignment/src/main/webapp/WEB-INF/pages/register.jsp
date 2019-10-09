@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
  <html>
@@ -54,7 +55,7 @@
 					<td><input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 					<form:input type="hidden" path="id" name="id" id="id"  value="${user.id}"  />
 					</td>
-					<td><a href="home">Home</a>
+					<td><a href='<c:url value="/home"/>'>Home</a>
 					</td>
 				</tr>
 			</table>
