@@ -26,6 +26,33 @@
 					</td>
 				</tr>
 				<tr>
+				   <td colspan="2">
+				   		<table>
+			   				<tr>
+			                    <td>Image#</td>
+			                    <td>
+			                        <div>
+			                            <img id="captcha_id" name="imgCaptcha" src="captcha.jpg">
+			                        </div>
+			                    </td>
+			                    <td align="left"><a href="javascript:;"
+			                        title="change captcha text"
+			                        onclick="document.getElementById('captcha_id').src = 'captcha.jpg?' + Math.random();  return false">
+			                            <img src="images/refresh.png" />
+			                    </a></td>
+			                </tr>
+			                <tr>
+			                    <td colspan="2"><form:errors path="captcha" cssClass="error" /></td>
+			                </tr>
+			 
+			                <tr>
+			                    <td>Enter above Image text#</td>
+			                    <td><form:input path="captcha" /></td>
+			                </tr>	   
+				   		</table>
+				   </td>
+				</tr>
+				<tr>
 					<td align="left">
 						<form:button id="login" name="login">Login</form:button>
 					</td>

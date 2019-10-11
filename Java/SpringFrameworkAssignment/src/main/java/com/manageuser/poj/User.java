@@ -1,10 +1,16 @@
 package com.manageuser.poj;
 
+import javax.validation.constraints.NotEmpty;
+
 public class User {
 	private int id;
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private String email;
+	@NotEmpty
 	private String username;
+	@NotEmpty
 	private String password;
 	
 	public User() {

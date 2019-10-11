@@ -1,12 +1,13 @@
 package com.manageuser.controller;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +23,14 @@ import com.manageuser.service.UserService;
 public class UserController {
 	
 	public IUserService userService;
+	private Logger logger = Logger.getLogger(UserController.class);
 	
 	@PostConstruct
 	public void initialize() {
+		logger.info("Intializing the service");
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config.xml");
 		userService = ctx.getBean("userService", UserService.class);
+		logger.info("Intialized");
 	}
 	
 	@RequestMapping(value= {"/welcome**"}, method = RequestMethod.GET )
@@ -40,6 +44,7 @@ public class UserController {
 	
 	@RequestMapping(value= {"/","/home**"}, method = RequestMethod.GET )
 	public ModelAndView homePage() {
+		logger.info("Hitting the homepage");
 		ModelAndView model = new ModelAndView();
 		model.setViewName("home");
 		return model;
@@ -47,19 +52,32 @@ public class UserController {
 	
 	@RequestMapping(value = {"/register"}, method = RequestMethod.GET)
 	public ModelAndView showRegister() {
+		logger.info("Loading the user register page");
 		ModelAndView model = new ModelAndView("register");
 		model.addObject("user", new User());
 		return model;
 	}
 	
 	@RequestMapping(value= {"/registerForm"}, method = RequestMethod.POST)
-	public ModelAndView addUser(@ModelAttribute("user") User user) {
+	public ModelAndView addUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+		
 		int userId;
+		
+		if (bindingResult.hasErrors()) {
+			logger.info("User Registration form have validation errors");
+			ModelAndView model = new ModelAndView("register");
+			model.addObject("user", user);
+			return model;
+		}
+		
+		logger.info("User registration is in progress");
+		
 		if (user.getId() >0){
 			userId = userService.updateUser(user);
 		}else{
 			userId = userService.addUser(user);
 		}
+		logger.info("New user added/updated");
 		ModelAndView model = new ModelAndView("account");
 		model.addObject("userid", userId);
 		return model;
@@ -67,6 +85,7 @@ public class UserController {
 	
 	@RequestMapping(value= "/updateaccount/{userid}", method = RequestMethod.GET)
 	public ModelAndView updateAccount(@PathVariable("userid") int userid) {
+		logger.info("Loading account update page");
 		System.out.println(userid);
 		ModelAndView model = new ModelAndView("register");
 		User user = userService.getUser(userid);
@@ -77,21 +96,33 @@ public class UserController {
 	
 	@RequestMapping(value= {"/login"}, method = RequestMethod.GET)
 	public ModelAndView showLogin() {
+		logger.info("Loading login page");
 		ModelAndView model = new ModelAndView("login");
 		model.addObject("login", new Login());
 		return model;
 	}
 	
 	@RequestMapping(value= {"/loginProcess"}, method = RequestMethod.POST)
-	public ModelAndView loginUser(@ModelAttribute("login") Login login) {
+	public ModelAndView loginUser(@ModelAttribute("login") Login login, HttpSession session) {
 		ModelAndView model = null;
+		logger.info("Login in progress");
+		String captcha=(String)session.getAttribute("CAPTCHA");
+	    if(captcha==null || (captcha!=null && !captcha.equals(login.getCaptcha()))){
+            login.setCaptcha("");
+            model.addObject("message", "Captcha does not match");
+            return model;
+	    }
+		
 		System.out.println("In Login Controller Method");
 		System.out.println(login.getUsername());
 		User user = userService.validateUser(login);
 		if (null != user) {
+			logger.info("Login success");
 			model = new ModelAndView("account");
 			model.addObject("userid", user.getId());
 		} else {
+			login.setCaptcha("");
+			logger.error("Login failed !");
 			model = new ModelAndView("login");
 			model.addObject("message", "Username or Password in wrong !!");
 		}

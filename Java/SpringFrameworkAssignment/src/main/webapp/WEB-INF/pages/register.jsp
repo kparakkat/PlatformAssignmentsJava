@@ -5,6 +5,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Registration Form</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <style type="text/css">
+            .errormsg {
+                color: red;
+            }
+        </style>
 	</head>
 	<body>
 		<form:form id="regForm" modelAttribute="user" action="registerForm" method="post">
@@ -16,6 +22,9 @@
 					<td>
 						<form:input path="name" name="name" id="name" value = "${user.name}" />
 					</td>
+					<td>
+						<small><form:errors path="name" cssClass="errormsg" /></small>
+					</td>
 				</tr>
 				<tr>
 					<td>
@@ -23,6 +32,9 @@
 					</td>
 					<td>
 						<form:input path="email" name="email" id="email" value="${user.email}"  />
+					</td>
+					<td>
+						<small><form:errors path="email" cssClass="errormsg" /></small>
 					</td>
 				</tr>
 				<tr>
@@ -32,6 +44,9 @@
 					<td>
 						<form:input path="username" name="username" id="username" value="${user.username}"/>
 					</td>
+					<td>
+						<small><form:errors path="username" cssClass="errormsg" /></small>
+					</td>
 				</tr>
 				<tr>
 					<td>
@@ -39,6 +54,9 @@
 					</td>
 					<td>
 						<form:password path="password" name="password" id="password" value="${user.password}" />
+					</td>
+					<td>
+						<small><form:errors path="password" cssClass="errormsg" /></small>
 					</td>
 				</tr>
 				<tr>
@@ -49,14 +67,15 @@
 						<form:button id="reset" name="reset">Reset</form:button>
 					</td>
 				</tr>
-				
-				<tr></tr>
 				<tr>
 					<td><input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 					<form:input type="hidden" path="id" name="id" id="id"  value="${user.id}"  />
 					</td>
 					<td><a href='<c:url value="/home"/>'>Home</a>
 					</td>
+				</tr>
+				<tr>
+				   <td> 
 				</tr>
 			</table>
 		</form:form>
