@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%
+	String contextPath = request.getContextPath();
+%>
  <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -10,10 +13,19 @@
             .errormsg {
                 color: red;
             }
+            * { font-family: Times New Roman !important }
         </style>
+        <script>
+		    function updatecaptcha() {
+		    	var captaPath = "/SpringFrameworkAssignment/captcha";
+		        document.getElementById('captchaimg').setAttribute('src', "captcha");
+		        var span = document.getElementById('captaerror');
+		        span.innerText = '';
+		    }
+		</script>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="user" action="registerForm" method="post">
+		<form:form id="regForm" modelAttribute="user" action="/SpringFrameworkAssignment/registerForm" method="post">
 			<table align="center">
 				<tr>
 					<td>
@@ -59,6 +71,20 @@
 						<small><form:errors path="password" cssClass="errormsg" /></small>
 					</td>
 				</tr>
+				
+				<tr>
+					<td>Captcha</td>
+					<td colspan="2">
+						<img src="/SpringFrameworkAssignment/captcha" id ="captchaimg">
+						<br>
+						<button onclick="updatecaptcha">Refresh</button>
+						<br>
+						<input type="text" name="captcha" style="margin-top: 5px;">
+						<br>
+						<span style="font-style: italic; color: red;" id="captaerror"> ${error } </span>
+					</td>
+				</tr>
+				
 				<tr>
 					<td>
 						<form:button id="register" name="register">Register</form:button>

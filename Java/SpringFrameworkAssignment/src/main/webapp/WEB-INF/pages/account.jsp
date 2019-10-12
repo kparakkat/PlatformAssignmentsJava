@@ -15,6 +15,12 @@
             	<td><a href='<c:url value="/updateaccount/${userid}"/>'>Update Account</a></td>
             </tr>
             <tr>
+            	<td><a href='<c:url value="/tutorials/${userid}"/>'>Tutorials</a></td>
+            </tr>
+            <tr>
+            	<td><a href='<c:url value="/admin/${userid}"/>'>Admin Page</a></td>
+            </tr>
+            <tr>
             </tr>
             <tr>
                 <td><a href='<c:url value="/home"/>'>Logout</a>

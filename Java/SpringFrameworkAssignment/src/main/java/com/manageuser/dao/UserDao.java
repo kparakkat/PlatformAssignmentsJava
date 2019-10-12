@@ -3,17 +3,21 @@ package com.manageuser.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.manageuser.exception.GlobalExceptionHandler;
 import com.manageuser.poj.Login;
 import com.manageuser.poj.User;
 
 public class UserDao implements IUserDao{
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	private Logger logger = Logger.getLogger(GlobalExceptionHandler.class);
 	
 	@Transactional
 	public User getUser(int id) {
@@ -45,7 +49,15 @@ public class UserDao implements IUserDao{
 	
 	@Transactional
 	public User validateUser(Login login) {
-		User user = (User) jdbcTemplate.queryForObject("select * from user where username = ? and password = ?", new Object[] { login.getUsername(), login.getPassword() }, new UserRowMapper());
+		User user = null;
+		try {
+		user = (User) jdbcTemplate.queryForObject("select * from user where username = ? and password = ?", new Object[] { login.getUsername(), login.getPassword() }, new UserRowMapper());
+		}
+		catch(Exception ex)
+		{
+			logger.error("Invalid login Attmpt: " + ex.getMessage());
+			user = null;
+		}
 		return user;
 	}
 	

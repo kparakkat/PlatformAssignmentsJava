@@ -12,6 +12,7 @@ public class User {
 	private String username;
 	@NotEmpty
 	private String password;
+	private String captcha;
 	
 	public User() {
 	}
@@ -57,5 +58,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getCaptcha() {
+	      return captcha;
+	}
+	public void setCaptcha(String captcha) {
+	      this.captcha = captcha;
 	}
 }
