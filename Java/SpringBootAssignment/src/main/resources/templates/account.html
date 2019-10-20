@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Account Details</title>
+</head>
+<body>
+	 <table>
+            <tr>
+                <td>Welcome to account details page</td>
+            </tr>
+            <tr>
+            	<td><a th:href="@{/updateaccount/${user.userid}}">Update Account</a></td>
+            </tr>
+            <tr>
+            	<td><a th:href="@{/tutorials/${userid}}">Tutorials</a></td>
+            </tr>
+            <tr>
+            	<td><a th:href="@{/admin/${userid}}">Admin Page</a></td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <td><a th:href="@{/home}">Logout</a>
+                </td>
+            </tr>
+        </table>
+
+</body>
+</html>

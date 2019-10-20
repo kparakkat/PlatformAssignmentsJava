@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+	<title>Registration Form</title>
+	   <style type="text/css">
+	          .errormsg {
+	              color: red;
+	          }
+	          * { font-family: Times New Roman !important }
+	    	</style>
+	    <script type="text/javascript">
+	    function updatecaptcha() {
+	    	var captaPath = "/captcha";
+	    	alert("In update Captcha");
+	        document.getElementById('captchaimg').setAttribute('src', "captcha");
+	    }
+	</script>
+</head>
+<body>
+	<form th:object="${login}" th:action="@{/loginProcess}" method="POST">
+		<table style="text-align:center;">
+			<tr>
+				<td>
+					User Name:
+				</td>
+				<td>
+					<input type="text" th:field="*{username}" name="username" id="username"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Password:
+				</td>
+				<td>
+					<input type="password" th:field="*{password}" name="password" id="password"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Captcha</td>
+				<td colspan="2">
+					<img src="/captcha" id ="captchaimg">
+					<br>
+					<input type="button" onClick="updatecaptcha" value="Refresh" />
+					<br>
+					<input type="text" th:field="*{captcha}" name="captcha" id="captcha" style="margin-top: 5px;">
+					<br>
+					
+					<div th:if="${error}" th:utext="${error}"
+			         style="color:red;font-style:italic;">
+			         ...
+			      	</div> 
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<input type="submit" value="Login"/>
+				</td>
+				<td>
+					<input type="button" id="reset" name="reset" value="Reset" />
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><a href='Home'>Home</a>
+				</td>
+			</tr>
+			<tr>
+			 	<td> <!-- Check if errorMessage is not null and not empty -->
+	             <div th:if="${errorMessage}" th:utext="${errorMessage}"
+			         style="color:red;font-style:italic;">
+			         ...
+			      </div> 
+      			</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
