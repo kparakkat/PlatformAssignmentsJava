@@ -12,8 +12,8 @@
        <script type="text/javascript">
 	    function updatecaptcha() {
 	    	var captaPath = "/captcha";
-	    	alert("In update Captcha");
-	        document.getElementById('captchaimg').setAttribute('src', "captcha");
+	    	// alert("In update Captcha");
+	        document.getElementById('captchaimg').setAttribute('src', "/captcha");
 	    }
 	</script>
 </head>
@@ -58,7 +58,7 @@
 				<td colspan="2">
 					<img src="/captcha" id ="captchaimg">
 					<br>
-					<input type="button" onClick="updatecaptcha" value="Refresh" />
+					<input type="button" th:onclick="|updatecaptcha()|" value="Refresh" />
 					<br>
 					<input type="text" th:field="*{captcha}" name="captcha" id="captcha" style="margin-top: 5px;">
 					<br>

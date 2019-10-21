@@ -42,7 +42,7 @@
 				<td colspan="2">
 					<img src="/captcha" id ="captchaimg">
 					<br>
-					<input type="button" onClick="updatecaptcha" value="Refresh" />
+					<input type="button" onclick="location.href='/captcha'" value="Refresh" />
 					<br>
 					<input type="text" th:field="*{captcha}" name="captcha" id="captcha" style="margin-top: 5px;">
 					<br>
@@ -64,7 +64,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><a href='Home'>Home</a>
+				<td><a th:href="@{/home}">Home</a>
 				</td>
 			</tr>
 			<tr>

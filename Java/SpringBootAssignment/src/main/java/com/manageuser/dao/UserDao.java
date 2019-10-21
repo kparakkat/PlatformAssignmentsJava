@@ -37,8 +37,22 @@ public class UserDao {
     return getSession().createQuery("from User").list();
   }
   
-  public User getById(long id) {
-    return (User) getSession().load(User.class, id);
+  public User getById(int id) {
+    // return (User) getSession().load(User.class, id);
+	  User user = null;
+		try {
+			user = (User) getSession().createQuery("from User where id = :id")
+												.setParameter("id", id)
+												.uniqueResult();
+			return user;	
+				
+		}
+		catch(Exception ex)
+		{
+			// logger.error("Invalid login Attmpt: " + ex.getMessage());
+			user = null;
+		}
+		return user;
   }
 
   public void update(User user) {

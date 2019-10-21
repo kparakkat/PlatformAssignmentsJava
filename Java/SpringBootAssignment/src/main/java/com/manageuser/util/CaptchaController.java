@@ -52,31 +52,7 @@ public class CaptchaController {
 		OutputStream osImage = response.getOutputStream();
 		ImageIO.write(biImage, "jpeg", osImage);
 		g2dImage.dispose();
-		
 		HttpSession session = request.getSession();
 		session.setAttribute("captcha_security", sImageCode);
-		
-		System.out.println( "In Capta Controller " + session.getAttribute("captcha_security").toString() );
-		
-		// System.out.println(request.getSession(false));
-		// request.setAttribute("captcha_security", sImageCode);
-		// System.out.println( "In Capta Controller " + request.getAttribute("captcha_security").toString() );
-		// Cookie cookie = new Cookie("captchaSecurity", sImageCode);
-		// response.addCookie(cookie);
-				
-		//HttpSession session = request.getSession();
-		//session.setAttribute("captcha_security", sImageCode);
-		// System.out.println(session.getAttribute("captcha_security"));
-		// model.addAttribute("captcha_security", sImageCode);
-		
-		/* HttpSession session = null;
-		 try {
-			session = request.getSession(false);
-			session.setAttribute("captcha_security", sImageCode);
-		}
-		catch(Exception ex) {
-			request.setAttribute("captcha_security", sImageCode);
-		} */
-		
 	}
 }

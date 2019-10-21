@@ -10,13 +10,13 @@
                 <td>Welcome to account details page</td>
             </tr>
             <tr>
-            	<td><a th:href="@{/updateaccount/${user.userid}}">Update Account</a></td>
+            	<td><a th:href="@{/updateaccount/{userid}(userid=${userid})}">Update Account</a></td>
             </tr>
             <tr>
-            	<td><a th:href="@{/tutorials/${userid}}">Tutorials</a></td>
+            	<td><a th:href="@{/tutorials/{userid}(userid=${userid})}">Tutorials</a></td>
             </tr>
             <tr>
-            	<td><a th:href="@{/admin/${userid}}">Admin Page</a></td>
+            	<td><a th:href="@{/admin/{userid}(userid=${userid})}">Admin Page</a></td>
             </tr>
             <tr>
             </tr>
