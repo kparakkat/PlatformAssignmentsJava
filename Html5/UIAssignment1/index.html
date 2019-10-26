@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Html5 Customized Media Player</title>
+  	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  	<!-- Custom CSS -->
+  	<link rel="stylesheet" type="text/css" href="css/interaction.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row videoArea">
+			<div class="menu">
+				<h5>Play List</h5>
+				<ul class="menuItems" style="color:blue; font-style: italic; text-decoration:underline">
+					<li onclick="loadVideo('media/grandcanyon.mov')">Grand Canyon</li>
+					<li onclick="loadVideo('media/lasvegas.MOV')">Las Vegas</li>
+				</ul>
+			</div>
+			<video id="video1" controls>
+				<source src="media/lasvegas.MOV" type="video/mp4">
+				Your browser does not support this type of video.
+			</video>
+		</div>
+	</div>
+	<div class="container controlArea">
+		<div class="row">
+			<img src="media/play.png" id="play_pause" onclick="toggleVideo()">
+			<img src="media/volueme_up.png" id="volueme_up" onclick="upVolueme()">
+			<img src="media/volueme_down.png" id="volueme_down" onclick="downVolueme()">
+			<img src="media/audio_mute.png" id="control_audio" onclick="muteAudio()">
+			<img src="media/like.png" id="like" onclick="doLike()">
+			<label id="likeCount" style="color:blue;font-weight:bold"></label>
+			<img src="media/unlike.png" id="unlike" onclick="doUnLike()">
+			<label id="unlikeCount" style="color:red;font-weight:bold" ></label>
+		</div>
+	</div>
+	<!-- Custom JS -->
+	<script src="js/interaction.js"></script>
+</body>
+</html>
