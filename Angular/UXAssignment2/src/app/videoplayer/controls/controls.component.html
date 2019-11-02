@@ -1,12 +1,12 @@
 <div class="container controlArea">
   <div class="row">
-    <img src="./assets/media/play.png" id="play_pause" onclick="toggleVideo()">
-    <img src="./assets/media/volueme_up.png" id="volueme_up" onclick="upVolueme()">
-    <img src="./assets/media/volueme_down.png" id="volueme_down" onclick="downVolueme()">
-    <img src="./assets/media/audio_mute.png" id="control_audio" onclick="muteAudio()">
-    <img src="./assets/media/like.png" id="like" onclick="doLike()">
-    <label id="likeCount" style="color:blue;font-weight:bold"></label>
-    <img src="./assets/media/unlike.png" id="unlike" onclick="doUnLike()">
-    <label id="unlikeCount" style="color:red;font-weight:bold" ></label>
+    <img [src]="imagePlayPauseURL" id="play_pause" (click)="onToggleVideo()">
+    <img src="./assets/media/volume_up.png" id="volume_up" (click)="onUpVolume()">
+    <img src="./assets/media/volume_down.png" id="volume_down" (click)="onDownVolume()">
+    <img [src]="imageMuteUnMuteURL" id="control_audio" (click)="onMuteUnMuteAudio()">
+    <img src="./assets/media/like.png" id="like" (click)="onDoLike()">
+    <label id="likeCount" style="color:blue;font-weight:bold">{{likeCount}}</label>
+    <img src="./assets/media/unlike.png" id="unlike" (click)="onDoUnLike()">
+    <label id="unlikeCount" style="color:red;font-weight:bold" >{{unlikeCount}}</label>
   </div>
 </div>

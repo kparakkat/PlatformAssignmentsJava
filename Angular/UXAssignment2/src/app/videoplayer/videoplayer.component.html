@@ -2,12 +2,13 @@
   <h5>Html5 Customized Media Player</h5>
   <div class="container">
     <div class="row videoArea">
-        <app-playlist></app-playlist>
-        <app-player></app-player>
+        <app-playlist (loadVideo)='onLoadVideo($event)'></app-playlist>
+        <app-player #childPlayer (playVideo)='onPlayVideo($event)' (pauseVideo)='onPauseVideo($event)'
+          (endedVideo)='onEndedVideo($event)' [playVideoPath]='playVideoPath'></app-player>
     </div>
   </div>
-  <app-controls></app-controls>
+  <app-controls (toggleVideo)='onToggleVideo($event)' [imagePlayPauseURL]='imagePlayPauseURL'
+      (upVolume)='onUpVolume($event)' (downVolume)='onDownVolume($event)'
+      (muteUnMuteAudio)='onMuteUnMuteAudio($event)' [imageMuteUnMuteURL]='imageMuteUnMuteURL'>
+  </app-controls>
 </div>
-
-
-
