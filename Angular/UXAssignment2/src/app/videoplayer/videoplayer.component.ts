@@ -9,7 +9,7 @@ import { PlayerComponent } from './player/player.component';
 export class VideoplayerComponent implements OnInit {
   imagePlayPauseURL:string = "./assets/media/play.png"; 
   imageMuteUnMuteURL:string = "./assets/media/audio_mute.png"; 
-  playVideoPath:string = "./assets/media/lasvegas2.MOV";
+  playVideoPath:string = "./assets/media/lasvegas.MOV";
   @ViewChild('childPlayer') player: PlayerComponent;
   constructor() { }
   ngOnInit() {
