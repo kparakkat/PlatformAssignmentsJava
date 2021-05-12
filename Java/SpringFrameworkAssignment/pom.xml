@@ -10,7 +10,7 @@
   <properties>
 		<jdk.version>1.6</jdk.version>
 		<spring.version>4.3.1.RELEASE</spring.version>
-		<spring.security.version>3.2.3.RELEASE</spring.security.version>
+		<spring.security.version>5.2.10.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
 		<h2.version>1.4.199</h2.version>
